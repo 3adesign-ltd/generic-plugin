@@ -30,7 +30,10 @@ typedef enum
     pdtNone = 0,
     pdtVideo,
     pdtAudio,
-    pdtAncillary
+    pdtAncillary,
+    // subtitle packets (e.g. DVB subtitles), carried compressed: is_compressed
+    // set, codec name in format. Appended so no existing value moves.
+    pdtSubtitle
 } PluginDataType;
 
 typedef struct plugin_uuid
