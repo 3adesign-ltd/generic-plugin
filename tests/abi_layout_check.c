@@ -53,6 +53,14 @@ _Static_assert(offsetof(PluginFrame, inputs_flags) == 1046,
 _Static_assert(offsetof(PluginFrame, inputs) == 1048,
                "inputs moved; the Rust mirror reads this offset");
 
+/* data_type crosses the ABI as a bare integer, so the values are the contract,
+ * not the names. Hosts already send pdtSubtitle as 4. */
+_Static_assert(pdtNone == 0, "pdtNone moved");
+_Static_assert(pdtVideo == 1, "pdtVideo moved");
+_Static_assert(pdtAudio == 2, "pdtAudio moved");
+_Static_assert(pdtAncillary == 3, "pdtAncillary moved");
+_Static_assert(pdtSubtitle == 4, "pdtSubtitle moved");
+
 _Static_assert(PHRAME_STAGE_OF(PHRAME_STAGE_PACK(pstComposite, 3)) == pstComposite,
                "stage_id pack/unpack must round-trip the stage");
 _Static_assert(PHRAME_INSTANCE_OF(PHRAME_STAGE_PACK(pstComposite, 3)) == 3,
